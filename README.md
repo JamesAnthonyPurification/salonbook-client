@@ -5,8 +5,8 @@ SalonBook is a salon appointment booking platform. Customers explore salon servi
 This repository contains the **Next.js frontend**, which also hosts **Better Auth** authentication.
 
 - **Live Website:** `https://your-salonbook.vercel.app` _(replace after deploying)_
-- **Client Repository:** `https://github.com/<your-username>/salonbook-client`
-- **Server Repository:** `https://github.com/<your-username>/salonbook-server`
+- **Client Repository:** `https://github.com/JamesAnthonyPurification/salonbook-client`
+- **Server Repository:** `https://github.com/JamesAnthonyPurification/salonbook-server`
 
 ## Important Features
 
@@ -46,7 +46,7 @@ Browser ──cookie──▶ Next.js (Better Auth, /api/token, /api/upload)
 ## Installation
 
 ```bash
-git clone https://github.com/<your-username>/salonbook-client.git
+git clone https://github.com/JamesAnthonyPurification/salonbook-client.git
 cd salonbook-client
 npm install
 cp .env.example .env.local   # then fill in the values
