@@ -35,13 +35,20 @@ export async function POST(req: Request) {
       method: "POST",
       body,
     });
-    const json = (await res.json()) as { success?: boolean; data?: { url?: string; display_url?: string } };
+    const json = (await res.json().catch(() => ({}))) as {
+      success?: boolean;
+      data?: { url?: string; display_url?: string };
+      error?: { message?: string; code?: number };
+    };
     const url = json?.data?.url || json?.data?.display_url;
     if (!res.ok || !json.success || !url) {
-      return NextResponse.json({ message: "Image upload failed. Please try another image." }, { status: 502 });
+      console.error("ImgBB upload failed:", res.status, JSON.stringify(json?.error ?? json));
+      const reason = json?.error?.message ? ` (${json.error.message})` : "";
+      return NextResponse.json({ message: `Image upload failed${reason}. Please try another image.` }, { status: 502 });
     }
     return NextResponse.json({ url });
-  } catch {
+  } catch (err) {
+    console.error("ImgBB upload error:", err);
     return NextResponse.json({ message: "Image upload failed. Please try again." }, { status: 502 });
   }
 }
