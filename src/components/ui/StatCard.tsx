@@ -26,7 +26,7 @@ export default function StatCard({
     <div className="card flex items-start justify-between gap-3 p-5">
       <div>
         <p className="text-sm font-medium text-stone-500">{label}</p>
-        <p className="mt-2 font-display text-3xl font-semibold text-stone-900">{value}</p>
+        <p className="mt-2 font-sans text-3xl font-bold tabular-nums text-stone-900">{value}</p>
         {hint && <p className="mt-1 text-xs text-stone-400">{hint}</p>}
       </div>
       <span className={`grid h-11 w-11 place-items-center rounded-xl ${tones[tone]}`}>

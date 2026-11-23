@@ -87,7 +87,7 @@ export default function CustomerOverview() {
               <Wallet className="h-5 w-5" />
             </span>
             <p className="mt-4 text-sm text-stone-300">Total paid</p>
-            <p className="mt-1 font-display text-3xl font-semibold text-white">
+            <p className="mt-1 font-sans text-3xl font-bold tabular-nums text-white">
               {stats.data ? formatPrice(stats.data.totalSpent) : "—"}
             </p>
             <p className="mt-1 text-xs text-stone-400">{stats.data?.payments ?? 0} successful payment(s)</p>

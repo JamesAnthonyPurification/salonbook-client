@@ -66,11 +66,11 @@ export default async function ServiceDetailsPage({ params }: { params: Promise<{
           <div className="mt-6 grid grid-cols-2 gap-4">
             <div className="card p-4">
               <p className="text-xs font-medium tracking-wide text-stone-500 uppercase">Price</p>
-              <p className="mt-1 font-display text-2xl font-semibold text-brand-800">{formatPrice(service.price)}</p>
+              <p className="mt-1 font-sans text-2xl font-bold tabular-nums text-brand-800">{formatPrice(service.price)}</p>
             </div>
             <div className="card p-4">
               <p className="text-xs font-medium tracking-wide text-stone-500 uppercase">Estimated duration</p>
-              <p className="mt-1 inline-flex items-center gap-1.5 font-display text-2xl font-semibold">
+              <p className="mt-1 inline-flex items-center gap-1.5 font-sans text-2xl font-bold tabular-nums">
                 <Clock className="h-5 w-5 text-brand-600" /> {formatDuration(service.duration)}
               </p>
             </div>
