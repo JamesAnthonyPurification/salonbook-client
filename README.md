@@ -28,7 +28,7 @@ This repository contains the **Next.js frontend**, which also hosts **Better Aut
 - `role` and `isBlocked` are server-only fields. Admins can't be created through sign-up.
 - Role-based dashboards are protected **on the server** (layouts redirect before rendering), so changing the URL can't open another role's dashboard, and private routes work after a refresh.
 - The Express API is called with a short-lived JWT issued from the Better Auth session (`/api/token`).
-- The ImgBB key stays server-side, behind the `/api/upload` route.
+- The ImgBB key stays server-side, behind the `/api/upload` route. ImgBB is the primary image host; Cloudinary is used only as an automatic fallback when ImgBB rejects an upload (ImgBB blocks uploads from some regions).
 - Toast notifications, confirmation dialogs, status badges, skeleton loaders, 404 and error pages, and a fully responsive layout.
 
 ## Technology Stack
@@ -65,6 +65,9 @@ GOOGLE_CLIENT_ID
 GOOGLE_CLIENT_SECRET
 JWT_SECRET                 # must match the server's JWT_SECRET
 IMGBB_API_KEY
+CLOUDINARY_CLOUD_NAME      # optional fallback image host
+CLOUDINARY_API_KEY         # optional
+CLOUDINARY_API_SECRET      # optional
 NEXT_PUBLIC_API_URL        # e.g. http://localhost:5000/api
 ```
 
