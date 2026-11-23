@@ -105,7 +105,10 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="container-x flex flex-col items-center justify-between gap-2 py-5 text-xs text-stone-500 sm:flex-row">
           <p>© {new Date().getFullYear()} SalonBook. All rights reserved.</p>
-          <p>Crafted with care for beautiful days.</p>
+          <div className="flex gap-4">
+            <Link href="/privacy" className="hover:text-gold-400">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-gold-400">Terms of Service</Link>
+          </div>
         </div>
       </div>
     </footer>
