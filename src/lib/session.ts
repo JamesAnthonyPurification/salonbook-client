@@ -4,14 +4,21 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { auth } from "./auth";
 
-/** Current Better Auth session (deduplicated per request). */
+/**
+ * Current Better Auth session (deduplicated per request).
+ * Retries once on failure so a transient database hiccup on a warm serverless
+ * instance doesn't wrongly sign the user out of a protected page.
+ */
 export const getSession = cache(async () => {
-  try {
-    return await auth.api.getSession({ headers: await headers() });
-  } catch (err) {
-    console.error("getSession failed:", err);
-    return null;
+  const h = await headers();
+  for (let attempt = 1; attempt <= 2; attempt++) {
+    try {
+      return await auth.api.getSession({ headers: h });
+    } catch (err) {
+      console.error(`getSession failed (attempt ${attempt}):`, err);
+    }
   }
+  return null;
 });
 
 export type Role = "admin" | "customer";
