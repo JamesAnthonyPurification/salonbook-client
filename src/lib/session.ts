@@ -8,7 +8,8 @@ import { auth } from "./auth";
 export const getSession = cache(async () => {
   try {
     return await auth.api.getSession({ headers: await headers() });
-  } catch {
+  } catch (err) {
+    console.error("getSession failed:", err);
     return null;
   }
 });
